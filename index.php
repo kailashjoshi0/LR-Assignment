@@ -20,7 +20,6 @@ else if (isset($_SESSION["adminlogin"]) && $_SESSION["adminlogin"] === true) {
          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
          <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
          <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
-         <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
          <link rel="stylesheet" href="css/style.css">
 
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -186,16 +185,25 @@ $_SESSION['registered'] = -1;
            </div>
         </div>
     </footer>
-    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
-    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
    </body>
    <script>
     function validateRegisterForm() {
-        if (document.forms["registerForm"]["username"].value == "") {
+		var email = document.forms["registerForm"]["username"].value;
+        if (email == "") {
             alert("Please enter valid email");
             return false;
         }
+		console.log(email);
+		if (email.length > 1 ) {
+			console.log('12');
+			var atPosition = email.indexOf("@");
+			var dotPosition = email.lastIndexOf(".");  
+			if (atPosition<1 || dotPosition<atPosition+2 || dotPosition+2>=email.length){  
+				alert("Please enter a valid e-mail address");  
+			return false;  
+			} 
+		}
         else if (document.forms["registerForm"]["password"].value == "") {
             alert("Please enter password");
             return false;
