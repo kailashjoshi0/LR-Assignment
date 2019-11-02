@@ -1,0 +1,16 @@
+.jumbotron {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #80aaff;
+  border-radius: 0.3rem;
+}
+
+.my-custom-scrollbar {
+position: relative;
+height: 300px;
+width: 75em;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
